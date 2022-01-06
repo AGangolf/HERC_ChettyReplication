@@ -21,4 +21,4 @@ ssc install eventdd, replace
 ssc install matsort, replace
 
 *Runs Event Study Regression*
-eventdd spend_all date statefips, timevar(timeToTreat) ci(rcap) cluster(statefips) graph_op(ytitle("Consumer Spending") xlabel(-80(20)21))
+eventdd spend_all date statefips, timevar(timeToTreat) ci(rcap) baseline(-86) cluster(statefips) graph_op(ytitle("Consumer Spending") xlabel(-80(20)21))

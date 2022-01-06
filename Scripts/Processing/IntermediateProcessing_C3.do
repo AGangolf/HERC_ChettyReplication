@@ -28,5 +28,22 @@ gen stateofinterest = 3
 *Generates standarized event study variable giving time relative to reopening policy
 gen timeToTreat = date-td(27apr2020)
 
+*Drops redundant date vars
+drop year
+drop month
+drop day
+
+*Normalizes % Change Vals in spend_all_norm
+gen spend_all_norm = spend_all
+gen id = _n
+forvalues j = 1(1)51 {
+	local temp = spend_all_norm[`j']
+	replace spend_all_norm = 0 if id == `j'
+	forvalues i = `j'(51)6171 {
+		replace spend_all_norm = spend_all_norm - `temp' if (id == `i' & `i' != `j')
+	}
+}
+drop id
+
 *Save Modified Dataset*
 save Data/IntermediateData/intermediate2_C3.dta, replace
