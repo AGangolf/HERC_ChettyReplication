@@ -20,5 +20,11 @@ use "Data/AnalysisData/analysis.dta"
 ssc install eventdd, replace
 ssc install matsort, replace
 
+drop if abs(timeToTreat)>14
+
 *Runs Event Study Regression*
-eventdd spend_all date statefips, timevar(timeToTreat) ci(rcap) baseline(-86) cluster(statefips) graph_op(ytitle("Consumer Spending") xlabel(-80(20)21))
+*gen eventTime = . 
+*replace eventTime = timeToTreat if opener==1
+*eventdd spend_all opener openTime reopened, timevar(eventTime) accum ci(rcap) leads(12) lags(26) cluster(statefips) graph_op(ytitle("Consumer Spending") xlabel(-80(20)21))
+
+reg spend_all opener openTime reopened
