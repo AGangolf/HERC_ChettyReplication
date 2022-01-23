@@ -23,9 +23,9 @@ generate date = mdy(month, day, year)
 format date %td
 
 *Converts data to weekly w/ mean
-*gen sundays = date - dow(date)
-*collapse spend_all, by(sundays statefips)
-*format sundays %td
+/*gen sundays = (date - dow(date-1))+6+4
+collapse spend_all, by(sundays statefips)
+format sundays %td*/
 
 *Converts data to weekly w/out mean
 gen weekday = dow(date)
@@ -51,7 +51,7 @@ gen id = _n
 forvalues j = 1(1)51 {
 	local temp = spend_all_norm[`j']
 	replace spend_all_norm = 0 if id == `j'
-	forvalues i = `j'(51)1020 {
+	forvalues i = `j'(51)969 {
 		replace spend_all_norm = spend_all - `temp' if (id == `i' & `i' != `j')
 	}
 }
@@ -68,6 +68,16 @@ gen openTime = 0
 replace openTime = 1 if timeToTreat>-1
 gen reopened = 0
 replace reopened = 1 if ((statefips==2 | statefips==13) & timeToTreat>-1)
+
+*Takes treatment and control avgs
+/*
+collapse spend_all spend_all_norm, by(sundays opener)
+gen stateofinterest = 2
+gen timeToTreat = sundays-td(24apr2020)
+gen openTime = 0
+replace openTime = 1 if timeToTreat>-1
+gen reopened = 0
+replace reopened = 1 if (opener==1 & openTime==1)*/
 
 *Save Modified Dataset*
 save Data/IntermediateData/intermediate2_C2.dta, replace

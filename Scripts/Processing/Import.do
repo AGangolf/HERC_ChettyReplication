@@ -46,13 +46,14 @@ drop provisional
 
 *Keeps only Relevant Data Ranges*
 keep if year == 2020
-keep if (month==1 & day>12) | month == 2 | month == 3 | month == 4 | month == 5
+*keep if (month==1 & day>12) | month == 2 | month == 3 | month == 4 | month == 5
+keep if (month==1 & day>25) | month == 2 | month == 3 | month == 4 | month == 5
 
 *Save Modified Dataset*
-save Data/IntermediateData/intermediate0_P1.dta, replace
+/*save Data/IntermediateData/intermediate0_P1.dta, replace
 keep if month == 2 | month == 3 | month == 4 | month == 5
-save Data/IntermediateData/intermediate0_P2.dta, replace
-*save Data/IntermediateData/intermediate1_C1.dta, replace
-*save Data/IntermediateData/intermediate1_C2.dta, replace
-*save Data/IntermediateData/intermediate1_C3.dta, replace
+save Data/IntermediateData/intermediate0_P2.dta, replace*/
+save Data/IntermediateData/intermediate1_C1.dta, replace
+save Data/IntermediateData/intermediate1_C2.dta, replace
+save Data/IntermediateData/intermediate1_C3.dta, replace
 
