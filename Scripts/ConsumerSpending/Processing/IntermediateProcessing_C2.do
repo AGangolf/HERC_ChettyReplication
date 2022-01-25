@@ -16,7 +16,7 @@ set more off
 
 
 *Select Intermediate Data*
-use "Data/IntermediateData/intermediate1_C2.dta"
+use "Data/ConsumerSpending/IntermediateData/intermediate1_C2.dta"
 
 *Converts date into a Stata readable format*
 generate date = mdy(month, day, year)
@@ -80,4 +80,4 @@ gen reopened = 0
 replace reopened = 1 if (opener==1 & openTime==1)*/
 
 *Save Modified Dataset*
-save Data/IntermediateData/intermediate2_C2.dta, replace
+save Data/ConsumerSpending/IntermediateData/intermediate2_C2.dta, replace

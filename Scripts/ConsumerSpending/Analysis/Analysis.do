@@ -14,7 +14,7 @@ Before running the following file:
 
 clear
 set more off 
-use "Data/AnalysisData/analysis.dta"
+use "Data/ConsumerSpending/AnalysisData/analysis.dta"
 
 *Installs Needed Programs*
 ssc install eventdd, replace

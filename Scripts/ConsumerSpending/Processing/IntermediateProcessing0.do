@@ -16,7 +16,7 @@ set more off
 
 
 *Select First Set of Intermediate Data*
-use "Data/IntermediateData/intermediate0_P1.dta"
+use "Data/ConsumerSpending/IntermediateData/intermediate0_P1.dta"
 
 *Remove non-January data
 drop if !(month==1)
@@ -30,10 +30,10 @@ gen year=2020
 gen month=1
 gen day=1
 
-append using "Data/IntermediateData/intermediate0_P2.dta"
+append using "Data/ConsumerSpending/IntermediateData/intermediate0_P2.dta"
 
 *Save Modified Dataset*
-save Data/IntermediateData/intermediate1_C1.dta, replace
-save Data/IntermediateData/intermediate1_C2.dta, replace
-save Data/IntermediateData/intermediate1_C3.dta, replace
+save Data/ConsumerSpending/IntermediateData/intermediate1_C1.dta, replace
+save Data/ConsumerSpending/IntermediateData/intermediate1_C2.dta, replace
+save Data/ConsumerSpending/IntermediateData/intermediate1_C3.dta, replace
 
