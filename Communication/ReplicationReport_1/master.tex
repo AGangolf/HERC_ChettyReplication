@@ -1,0 +1,116 @@
+\documentclass[12pt,letterpaper]{article}
+\input{preamble.tex}
+\title{Summary of Replication Efforts for Section IV.A of Chetty et al.’s ``The Economic Impacts of COVID-19: Evidence from a New Public Database Built Using Private Sector Data''}
+\begin{document}
+  \maketitle
+  \section{Introduction}
+    The Haverford Economics Research Club is a student group at Haverford College which offers students the opportunity to learn about the structure and execution of economic research. In service of this goal, we are beginning to write an extension of Section IV.A of "The Economic Impacts of COVID-19: Evidence from a New Public Database Built Using Private Sector Data" \parencite{Chetty2020} the extension of which concerns the effect of varied reopening strategies (i.e., multi-phase reopenings, rather than the original single-event analysis) on consumer spending, employment, and business openings.  We have begun our work by attempting to replicate the paper’s original findings.
+  \section{Replication}
+    The figures listed below are our attempt to replicate Table 3 columns (1), (2), (3), (4), (5), (6), (7), (8), (9), (10) in addition to Figure 12b, Figure 12c, and Figure 12d.  In each of the OLS regressions, doesOpen (or ‘opener’) is an indicator variable for whether the state is a treatment or control, afterEvent (or ‘openTime’) is an indicator variable for whether the observation is past the relevant reopening date, and isOpen (or ‘reopened’) is an interaction term between the preceding two variables. 
+      
+      \subsection{Consumer Spending}
+        Raw data obtained from the Opportunity Insights GitHub page were processed by collapsing the frequency to weekly by eliminating all non-Sunday observations.  This method was used due to the raw data’s format as a 7-day moving average.  All other variable coding and processing was consistent with the working paper’s specifications.
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/spend_all_2wk.png}
+          \caption{OLS Regression performed on spend\_all in doesOpen, afterEvent, and isOpen over 2-week horizon.  Predicts 1.08 p.p. increase in consumer spending with reopening.}
+          \label{fig:figures-spend_all_2wk-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/spend_all_3wk.png}
+          \caption{OLS Regression performed on spend\_all in doesOpen, afterEvent, and isOpen over 3-week horizon.  Predicts 0.59 p.p. increase in consumer spending with reopening.}
+          \label{fig:figures-spend_all_3wk-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/spend_all_graph.png}
+\caption{To create this graph, the spend\_all series for the April 24th reopening date was redefined as the Thursday value, rather than the Sunday value, in order to put our event timing variable, timeToTreat, into phase across the three treatment groups.  These series were then aggregated and collapsed by treatment vs. control status and time relative to treatment (timeToTreat).}
+          \label{fig:figures-spend_all_graph-png}
+        \end{figure}
+        \clearpage
+      \subsection{Employment}
+Raw data obtained from the Opportunity Insights GitHub page were processed by collapsing the frequency to weekly by taking the average of each Sunday–Saturday week and attributing this mean to the Sunday’s date.  All other variable coding and processing was consistent with the working paper’s specifications.
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/emp_2wk.png}
+\caption{OLS Regression performed on emp in doesOpen, afterEvent, and isOpen over 2-week horizon.  Predicts 0.27 p.p. increase in employment with reopening.}
+          \label{fig:figures-emp_2wk-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/emp_3wk.png}
+\caption{OLS Regression performed on emp in doesOpen, afterEvent, and isOpen over 3-week horizon.  Predicts 0.67 p.p. increase in employment with reopening.}
+          \label{fig:figures-emp_3wk-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/emp_incq1.png}
+\caption{OLS Regression performed on emp\_incq1 in doesOpen, afterEvent, and isOpen over 2-week horizon.  Predicts 0.33 p.p. increase in first-income-quartile employment with reopening.}
+          \label{fig:figures-emp_incq1-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/emp_incq4.png}
+\caption{OLS Regression performed on emp\_incq4 in doesOpen, afterEvent, and isOpen over 2-week horizon.  Predicts 0.69 p.p. increase in fourth-income-quartile employment with reopening.}
+          \label{fig:figures-emp_incq4-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/emp_graph.png}
+\caption{To create this graph, the emp series for the April 24th reopening date was redefined using a Thursday-–Wednesday week, in order to put our event timing variable, timeToTreat, into phase across the three treatment groups.  These series were then aggregated and collapsed by treatment vs. control status and time relative to treatment (timeToTreat).}
+          \label{fig:figures-emp_graph-png}
+        \end{figure}
+        \clearpage
+      \subsection{Small Businesses}
+        Raw data obtained from the Opportunity Insights GitHub page were processed by collapsing the frequency to weekly by eliminating all non-Sunday observations.  This method was used due to the raw data’s format as a 7-day moving average.  All other variable coding and processing was consistent with the working paper’s specifications.
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/merchants_all_2wk.png}
+\caption{OLS Regression performed on merchants\_all in opener, openTime, and reopened over 2-week horizon.  Predicts 2.91 p.p. increase in open small businesses with reopening.}
+          \label{fig:figures-merchants_all_2wk-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/merchants_all_3wk.png}
+\caption{OLS Regression performed on merchants\_all in opener, openTime, and reopened over 3-week horizon.  Predicts 3.91 p.p. increase in open small businesses with reopening.}
+          \label{fig:figures-merchants_all_3wk-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/merchants_all_graph.png}
+\caption{To create this graph, the merchants\_all series for the April 24th reopening date was redefined as the Thursday value, rather than the Sunday value, in order to put our event timing variable, timeToTreat, into phase across the three treatment groups.  These series were then aggregated and collapsed by treatment vs. control status and time relative to treatment (timeToTreat).}
+          \label{fig:figures-merchants_all_graph-png}
+        \end{figure}
+        \clearpage
+      \subsection{Mobility}
+        Raw data obtained from the Opportunity Insights GitHub page were processed by collapsing the frequency to weekly by eliminating all non-Sunday observations.  This method was used due to the raw data’s format as a 7-day moving average.  All other variable coding and processing was consistent with the working paper’s specifications.
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/gps_2wk.png}
+          \caption{OLS Regression performed on gps\_away\_from\_home in doesOpen, afterEvent, and isOpen over 2-week horizon.  Predicts 0.73 p.p. increase in consumer spending with reopening.}
+          \label{fig:figures-gps_2wk-png}
+        \end{figure}
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/gps_3wk.png}
+          \caption{OLS Regression performed on gps\_away\_from\_home in doesOpen, afterEvent, and isOpen over 3-week horizon.  Predicts 1.32 p.p. increase in consumer spending with reopening.}
+          \label{fig:figures-gps_3wk-png}
+        \end{figure}  
+        \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/gps_graph.png}
+\caption{To create this graph, the gps\_away\_from\_home series for the April 24th reopening date was redefined as the Thursday value, rather than the Sunday value, in order to put our event timing variable, timeToTreat, into phase across the three treatment groups.  These series were then aggregated and collapsed by treatment vs. control status and time relative to treatment (timeToTreat).}
+          \label{fig:figures-gps_graph-png}
+        \end{figure}
+    \section{Inconsistencies}
+      \subsection{Regression Results}
+        None of our above regressions give results completely consistent with the working paper; for example, our regression in Figure~\ref{fig:figures-emp_2wk-png} on employment with a two-week horizon gave an interaction coefficient of 0.0027 while the original paper gave 0.0065. We are not completely sure of the cause of these discrepancies, but differences in the number of observations gives a clue.  In the aforementioned regression, the original paper listed 208 observations, while ours gives 176.  This 32-data-point gap was traced to missing data for control states including the District of Columbia and South Dakota.  Hence, we attribute most of the variability between our results and the original paper's to differences in the dataset used for each analysis rather than technical errors.
+      \subsection{Graphs}
+        Most of our graphs look extremely similar to those provided in the original paper, although almost all display slight discrepancies during the three or four weeks surrounding the treatment time.  We attribute this variability to data set discrepancies as per the preceding discussion of missing values.
+      \section{Stata Code}
+        To aid in reproducibility, our STATA do-files are available on GitHub at https://github.com/AGangolf/HERC\_ChettyReplication.
+
+        \printbibliography
+\end{document}
+

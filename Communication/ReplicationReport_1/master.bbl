@@ -1,0 +1,87 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/global//global/global}
+    \entry{Chetty2020}{article}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=7a853740afbc544905334cf607b3cd51}{%
+           family={Chetty},
+           familyi={C\bibinitperiod},
+           given={Raj},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fb2eb6a3bea93fb3238fb8e1de2cf006}{%
+           family={Friedman},
+           familyi={F\bibinitperiod},
+           given={John\bibnamedelima N},
+           giveni={J\bibinitperiod\bibinitdelim N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8dddc1bd4014bf50f037b3b8772994dd}{%
+           family={Hendren},
+           familyi={H\bibinitperiod},
+           given={Nathaniel},
+           giveni={N\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=afb43a20acaf3b760e2f4d23f3cec5cb}{%
+           family={Stepner},
+           familyi={S\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=fb56ebdaeec8c166ddc9cbbecc89382d}{%
+           family={Team},
+           familyi={T\bibinitperiod},
+           given={The\bibnamedelimb Opportunity\bibnamedelima Insights},
+           giveni={T\bibinitperiod\bibinitdelim O\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{de9f176c59c95a4d2de134921515d461}
+      \strng{fullhash}{23f147506c8c857444c277a1c4d957b7}
+      \strng{bibnamehash}{23f147506c8c857444c277a1c4d957b7}
+      \strng{authorbibnamehash}{23f147506c8c857444c277a1c4d957b7}
+      \strng{authornamehash}{de9f176c59c95a4d2de134921515d461}
+      \strng{authorfullhash}{23f147506c8c857444c277a1c4d957b7}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We build a publicly available database that tracks economic activity at a granular level in real time using anonymized data from private companies. We report daily statistics on consumer spending, business revenues, employment rates, and other key indicators disaggregated by ZIP code, industry, income group, and business size. Using these data, we study how COVID-19 affected the economy by analyzing heterogeneity in its impacts. We first show that high-income individuals reduced spending sharply in mid-March 2020, particularly in areas with high rates of COVID-19 infection and in sectors that require in-person interaction. This reduction in spending greatly reduced the revenues of small businesses in affluent ZIP codes. These businesses laid off many of their employees, leading to widespread job losses especially among low-wage workers in affluent areas. High-wage workers experienced a “V-shaped” recession that lasted a few weeks, whereas low-wage workers experienced much larger job losses that persisted for several months. Building on this diagnostic analysis, we estimate the causal effects of policies aimed at mitigating the adverse impacts of COVID-19. State-ordered reopenings of economies had small impacts on spending and employment. Stimulus payments to low-income households increased consumer spending sharply, but little of this increased spending flowed to businesses most affected by the COVID-19 shock, dampening its impacts on employment. Paycheck Protection Program loans increased employment at small businesses by only 2\%, implying a cost of \$377,000 per job saved. These results suggest that traditional macroeconomic tools – stimulating aggregate demand or providing liquidity to businesses – have diminished capacity to restore employment when consumer spending is constrained by health concerns. During a pandemic, it may be more fruitful to mitigate economic hardship through social insurance. More broadly, this analysis shows how public statistics constructed from private sector data can support many research and policy analyses without compromising privacy, providing a new tool for empirical macroeconomics.}
+      \field{journaltitle}{National Bureau of Economic Research Working Paper Series}
+      \field{title}{The {{Economic Impacts}} of {{COVID-19}}: {{Evidence}} from a {{New Public Database Built Using Private Sector Data}}}
+      \field{volume}{No. 27431}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{doi}
+      \verb 10.3386/w27431
+      \endverb
+      \verb{urlraw}
+      \verb http://www.nber.org/papers/w27431
+      \endverb
+      \verb{url}
+      \verb http://www.nber.org/papers/w27431
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

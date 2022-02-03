@@ -23,7 +23,5 @@ use "Data/ConsumerSpending/IntermediateData/intermediate2_C3.dta"
 append using "Data/ConsumerSpending/IntermediateData/intermediate2_C1.dta"
 append using "Data/ConsumerSpending/IntermediateData/intermediate2_C2.dta"
 
-sort stateofinterest
-
 *Save Modified Dataset*
 save Data/ConsumerSpending/AnalysisData/analysis.dta, replace
