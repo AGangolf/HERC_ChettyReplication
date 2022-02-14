@@ -14,24 +14,14 @@ Before running the following file:
 
 clear
 set more off 
-use "Data/AnalysisData/analysis.dta"
+use "Data/SmallBusiness/AnalysisData/analysis.dta"
 
-*Installs Needed Programs*
-ssc install eventdd, replace
-ssc install matsort, replace
+reg merchants_all doesOpen afterEvent isOpened if (timeToTreat<21 & timeToTreat>-21), cluster(statefips)
 
-*drop if abs(timeToTreat)>14
-
-*Runs Event Study Regression*
-*gen eventTime = . 
-*replace eventTime = timeToTreat if opener==1*eventdd spend_all opener openTime reopened, timevar(eventTime) accum ci(rcap) leads(12) lags(26) cluster(statefips) graph_op(ytitle("Consumer Spending") xlabel(-80(20)21))
-
-reg spend_all opener openTime reopened if (timeToTreat<25 & timeToTreat>-21), cluster(statefips)
-/*collapse spend_all spend_all_norm, by(opener timeToTreat)
-gen openTime = 0
-replace openTime = 1 if timeToTreat>-1
-gen reopened = 0
-replace reopened = 1 if (opener==1 & openTime==1)
-reg spend_all opener openTime reopened if !(abs(timeToTreat)>14)
-twoway connected spend_all_norm timeToTreat if (opener==0 & timeToTreat<21), sort || connected spend_all_norm timeToTreat if (opener==1 & timeToTreat<21), sort
-
+/*collapse merchants_all, by(doesOpen timeToTreat)
+gen afterEvent = 0
+replace afterEvent = 1 if timeToTreat>-1
+gen isOpened = 0
+replace isOpened = 1 if (doesOpen==1 & afterEvent==1)
+reg merchants_all doesOpen afterEvent isOpened if !(abs(timeToTreat)>14)
+twoway connected merchants_all timeToTreat if (doesOpen==0 & timeToTreat<21), sort || connected merchants_all timeToTreat if (doesOpen==1 & timeToTreat<21), sort

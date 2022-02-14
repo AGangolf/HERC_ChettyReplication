@@ -11,33 +11,25 @@ Before running the following file:
 	
 ************************************************
 ************************************************/
+
+*Uncomment and modify the following line of code to change working dir
 cd ~/Projects/HERC_ChettyReplication
 
 clear
 set more off
 
-
 *Import Original Dataset*
-*import delimited "Data/Employment/InputData/Employment - State - Daily.csv"
-import delimited "Data/Employment/InputData/Employment Combined - State - Daily.csv"
+import delimited "Data/Mobility/InputData/Google Mobility - State - Daily.csv"
 
-*Rename Old Data Columns*
-ren emp_combined emp
-ren emp_combined_inclow emp_incq1
-ren emp_combined_inchigh emp_incq4
-
-*Drops Irrelevant Columns (Old Data)*
-keep year month day statefips emp emp_incq1 emp_incq4
-
-/*Drops Irrelevant Columns*
-drop emp_incq2 emp_incq3 emp_incmiddle emp_incbelowmed emp_incabovemed emp_ss40 emp_ss60 emp_ss65 emp_ss70*/
+*Drops Irrelevant Columns*
+keep year month day statefips gps_away_from_home
 
 *Keeps only Relevant Data Ranges*
 keep if year == 2020
 keep if (month==1 & day>25) | month == 2 | month == 3 | month == 4 | month == 5
 
 *Save Modified Dataset*
-save Data/Employment/IntermediateData/intermediate1_C1.dta, replace
-save Data/Employment/IntermediateData/intermediate1_C2.dta, replace
-save Data/Employment/IntermediateData/intermediate1_C3.dta, replace
+save Data/Mobility/IntermediateData/intermediate1_GM1.dta, replace
+save Data/Mobility/IntermediateData/intermediate1_GM2.dta, replace
+save Data/Mobility/IntermediateData/intermediate1_GM3.dta, replace
 

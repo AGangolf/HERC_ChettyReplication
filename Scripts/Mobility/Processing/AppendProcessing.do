@@ -13,17 +13,16 @@ Before running the following file:
 clear
 set more off
 
-
 *Selects All Intermediate Data*
-use "Data/SmallBusiness/IntermediateData/intermediate2_C1.dta"
-use "Data/SmallBusiness/IntermediateData/intermediate2_C2.dta"
-use "Data/SmallBusiness/IntermediateData/intermediate2_C3.dta"
+use "Data/Mobility/IntermediateData/intermediate2_GM1.dta"
+use "Data/Mobility/IntermediateData/intermediate2_GM2.dta"
+use "Data/Mobility/IntermediateData/intermediate2_GM3.dta"
 
 *Appends All Data to Create One Set*
-append using "Data/SmallBusiness/IntermediateData/intermediate2_C1.dta"
-append using "Data/SmallBusiness/IntermediateData/intermediate2_C2.dta"
+append using "Data/Mobility/IntermediateData/intermediate2_GM1.dta"
+append using "Data/Mobility/IntermediateData/intermediate2_GM2.dta"
 
 sort stateofinterest
 
 *Save Modified Dataset*
-save Data/SmallBusiness/AnalysisData/analysis.dta, replace
+save Data/Mobility/AnalysisData/analysis_GM.dta, replace

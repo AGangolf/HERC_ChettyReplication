@@ -1,7 +1,7 @@
 /************************************************
 Before running the following file:
 
-	-Download in .csv format the Affinity - Country - Data dataset following the instructions in
+	-Download in .csv format the Womply - State - Daily dataset following the instructions in
 	ReadMe.pdf
 	
 	-Designate the ChettyProject/ as the working directory
@@ -11,49 +11,43 @@ Before running the following file:
 	
 ************************************************
 ************************************************/
-cd ~/Projects/HERC_ChettyReplication
+*cd ~/Projects/HERC_ChettyReplication
 
 clear
 set more off
 
 
 *Import Original Dataset*
-import delimited "Data/InputData/Affinity - State - Daily.csv"
+import delimited "Data/SmallBusiness/InputData/Womply - State - Daily.csv"
 
 *Drops Irrelevant Columns*
-drop spend_aap
-drop spend_acf
-drop spend_aer
-drop spend_apg
-drop spend_durables
-drop spend_nondurables
-drop spend_grf
-drop spend_gen
-drop spend_hic
-drop spend_hcs
-drop spend_inpersonmisc
-drop spend_remoteservices
-drop spend_sgh
-drop spend_tws
-drop spend_retail_w_grocery
-drop spend_retail_no_grocery
-drop spend_all_incmiddle
-drop spend_all_q1
-drop spend_all_q2
-drop spend_all_q3
-drop spend_all_q4
-drop provisional
+drop revenue_all
+drop revenue_inchigh
+drop revenue_inclow
+drop revenue_incmiddle
+drop revenue_ss40
+drop revenue_ss60
+drop revenue_ss65
+drop revenue_ss70
+drop revenue_food_accommodation
+drop revenue_retail
+drop merchants_inchigh
+drop merchants_inclow
+drop merchants_incmiddle
+drop merchants_ss40
+drop merchants_ss60
+drop merchants_ss65
+drop merchants_ss70
+drop merchants_food_accommodation
+drop merchants_retail
 
 *Keeps only Relevant Data Ranges*
 keep if year == 2020
+
 *keep if (month==1 & day>12) | month == 2 | month == 3 | month == 4 | month == 5
 keep if (month==1 & day>25) | month == 2 | month == 3 | month == 4 | month == 5
 
-*Save Modified Dataset*
-/*save Data/IntermediateData/intermediate0_P1.dta, replace
-keep if month == 2 | month == 3 | month == 4 | month == 5
-save Data/IntermediateData/intermediate0_P2.dta, replace*/
-save Data/IntermediateData/intermediate1_C1.dta, replace
-save Data/IntermediateData/intermediate1_C2.dta, replace
-save Data/IntermediateData/intermediate1_C3.dta, replace
-
+*Saves all intermediate files
+save Data/SmallBusiness/IntermediateData/intermediate1_C1.dta, replace
+save Data/SmallBusiness/IntermediateData/intermediate1_C2.dta, replace
+save Data/SmallBusiness/IntermediateData/intermediate1_C3.dta, replace

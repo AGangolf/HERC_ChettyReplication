@@ -23,7 +23,7 @@ generate date = mdy(month, day, year)
 format date %td
 
 *Converts data to weekly w/ mean
-gen sundays = (date - dow(date-1))+6+4
+gen sundays = (date - dow(date-1))+6
 collapse emp emp_incq1 emp_incq4, by(sundays statefips)
 format sundays %td
 

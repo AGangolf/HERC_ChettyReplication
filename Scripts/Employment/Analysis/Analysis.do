@@ -17,9 +17,10 @@ set more off
 use "Data/Employment/AnalysisData/analysis.dta"
 
 *Runs Relevant Regressions
+reg emp doesOpen afterEvent isOpen if (timeToTreat<15 & timeToTreat>-15), cluster(statefips)
 reg emp doesOpen afterEvent isOpen if (timeToTreat<22 & timeToTreat>-22), cluster(statefips)
 reg emp_incq1 doesOpen afterEvent isOpen if (timeToTreat<15 & timeToTreat>-15), cluster(statefips)
-reg emp_incq4 doesOpen afterEvent isOpen if (timeToTreat<15 & timeToTreat>-15), cluster(statefips)
+reg emp_incq4 doesOpen afterEvent isOpen if (timeToTreat<15 & timeToTreat>-15), cluster(statefips)*/
 
 *Cleans Data for Graphing
 collapse emp, by(doesOpen timeToTreat)
