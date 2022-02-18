@@ -11,7 +11,7 @@ Before running the following file:
 	
 ************************************************
 ************************************************/
-*cd ~/Projects/HERC_ChettyReplication
+cd ~/Projects/HERC_ChettyReplication
 
 clear
 set more off
