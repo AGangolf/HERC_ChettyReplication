@@ -29,5 +29,9 @@ order any_sector_tight, after(any_sector)
 
 *NOTE: SD Never Even Closed & DC Weird*
 
+*Drop pcare due to confounding with retail*
+drop pcare
+
 *Save Modified Dataset*
 save Data/Extension/IntermediateData/intermediate_E2.dta, replace
+
