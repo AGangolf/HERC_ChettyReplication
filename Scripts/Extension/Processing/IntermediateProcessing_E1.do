@@ -34,4 +34,6 @@ drop pcare
 
 *Save Modified Dataset*
 save Data/Extension/IntermediateData/intermediate_E2.dta, replace
+save Data/Extension/AnalysisData/analysis_panel.dta, replace
+
 
