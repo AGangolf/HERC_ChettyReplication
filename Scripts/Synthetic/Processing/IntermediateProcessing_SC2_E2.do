@@ -70,28 +70,76 @@ synth emp emp(`startDate'(1)`dOI'), trunit(`treatState') trperiod(`dOI') keep(~/
 synth merchants_all merchants_all(`startDate'(1)`dOI'), trunit(`treatState') trperiod(`dOI') keep(~/Projects/HERC_ChettyReplication/Data/Synthetic/IntermediateData/intermediate_SC3_E2_MOB.dta) replace
 synth gps gps(`startDate'(1)`dOI'), trunit(`treatState') trperiod(`dOI') keep(~/Projects/HERC_ChettyReplication/Data/Synthetic/IntermediateData/intermediate_SC3_E2_GPS.dta) replace
 
-*Merge Synthetic Controls*
+*Reshape Synthetic Control Data*
 use "Data/Synthetic/IntermediateData/intermediate_SC3_E2_SPEND.dta", clear
-ren _Y_treated spend_all_treated
-ren _Y_synthetic spend_all_synthetic
-merge 1:1 _time using "Data/Synthetic/IntermediateData/intermediate_SC3_E2_EMP.dta"
+drop _Co_Number _W_Weight
+ren _Y_treated spend_all1
+ren _Y_synthetic spend_all0
+reshape long spend_all, i(_time) j(doesOpen)
+save Data/Synthetic/IntermediateData/intermediate_SC3_E2_SPEND.dta, replace
+
+use "Data/Synthetic/IntermediateData/intermediate_SC3_E2_EMP.dta", clear
+drop _Co_Number _W_Weight
+ren _Y_treated emp1
+ren _Y_synthetic emp0
+reshape long emp, i(_time) j(doesOpen)
+save Data/Synthetic/IntermediateData/intermediate_SC3_E2_EMP.dta, replace
+
+use "Data/Synthetic/IntermediateData/intermediate_SC3_E2_MOB.dta", clear
+drop _Co_Number _W_Weight
+ren _Y_treated merchants_all1
+ren _Y_synthetic merchants_all0
+reshape long merchants_all, i(_time) j(doesOpen)
+save Data/Synthetic/IntermediateData/intermediate_SC3_E2_MOB.dta, replace
+
+use "Data/Synthetic/IntermediateData/intermediate_SC3_E2_GPS.dta", clear
+drop _Co_Number _W_Weight
+ren _Y_treated gps1
+ren _Y_synthetic gps0
+reshape long gps, i(_time) j(doesOpen)
+save Data/Synthetic/IntermediateData/intermediate_SC3_E2_GPS.dta, replace
+
+*Merge*
+use "Data/Synthetic/IntermediateData/intermediate_SC3_E2_SPEND.dta", clear
+merge 1:1 _time doesOpen using "Data/Synthetic/IntermediateData/intermediate_SC3_E2_EMP.dta"
 drop _merge
-ren _Y_treated emp_treated
-ren _Y_synthetic emp_synthetic
-merge 1:1 _time using "Data/Synthetic/IntermediateData/intermediate_SC3_E2_MOB.dta"
+merge 1:1 _time doesOpen using "Data/Synthetic/IntermediateData/intermediate_SC3_E2_MOB.dta"
 drop _merge
-ren _Y_treated merchants_all_treated
-ren _Y_synthetic merchants_all_synthetic
-merge 1:1 _time using "Data/Synthetic/IntermediateData/intermediate_SC3_E2_GPS.dta"
+merge 1:1 _time doesOpen using "Data/Synthetic/IntermediateData/intermediate_SC3_E2_GPS.dta"
 drop _merge
-ren _Y_treated gps_treated
-ren _Y_synthetic gps_synthetic
 ren _time date
 format date %td
-keep date spend_all_treated spend_all_synthetic emp_treated emp_synthetic merchants_all_treated merchants_all_synthetic gps_treated gps_synthetic
-order date, before(spend_all_treated)
+keep date doesOpen spend_all emp merchants_all gps
+order date, before(spend_all)
+order doesOpen, after(gps)
 gen dateOfInterest=`dOI'
 order dateOfInterest, after(date)
+format dateOfInterest %td
+
+*Define Indicator Variables*
+gen afterEvent=0
+replace afterEvent=1 if date>=dateOfInterest
+gen isOpen=0
+replace isOpen=1 if (doesOpen==1 & afterEvent==1)
 
 *Save Modified Dataset*
 save Data/Synthetic/IntermediateData/intermediate_SC3_E2.dta, replace
+
+*Run Regressions and Save Matrix Outputs*
+reg spend_all doesOpen afterEvent isOpen if (abs(date-dateOfInterest)<=14)
+matrix E2_SPEND_2 = r(table)
+reg spend_all doesOpen afterEvent isOpen if (abs(date-dateOfInterest)<=21)
+matrix E2_SPEND_3 = r(table)
+reg emp doesOpen afterEvent isOpen if (abs(date-dateOfInterest)<=14)
+matrix E2_EMP_2 = r(table)
+reg emp doesOpen afterEvent isOpen if (abs(date-dateOfInterest)<=21)
+matrix E2_EMP_3 = r(table)
+reg merchants_all doesOpen afterEvent isOpen if (abs(date-dateOfInterest)<=14)
+matrix E2_MOB_2 = r(table)
+reg merchants_all doesOpen afterEvent isOpen if (abs(date-dateOfInterest)<=21)
+matrix E2_MOB_3 = r(table)
+reg gps doesOpen afterEvent isOpen if (abs(date-dateOfInterest)<=14)
+matrix E2_GPS_2 = r(table)
+reg gps doesOpen afterEvent isOpen if (abs(date-dateOfInterest)<=21)
+matrix E2_GPS_3 = r(table)
+
