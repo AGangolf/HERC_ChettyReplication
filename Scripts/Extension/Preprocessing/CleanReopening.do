@@ -20,7 +20,7 @@ set more off
 use "Data/Reopening/AnalysisData/analysis.dta"
 
 *Drop Unnecessary Dates*
-keep if (date>mdy(02,23,2020) & date<mdy(07,02,2020))
+keep if (date>mdy(02,23,2020) & date<=mdy(12,31,2020))
 
 *Re-Sort to Match Standard*
 sort date statefips

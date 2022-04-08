@@ -32,7 +32,7 @@ ren emp_combined emp
 keep date statefips emp
 
 *Drop Unnecessary Dates*
-keep if (date>mdy(02,23,2020) & date<mdy(07,02,2020))
+keep if (date>mdy(02,23,2020) & date<=mdy(12,31,2020))
 
 *Save Modified Dataset*
 save Data/Extension/InputData/cleanEmployment.dta, replace

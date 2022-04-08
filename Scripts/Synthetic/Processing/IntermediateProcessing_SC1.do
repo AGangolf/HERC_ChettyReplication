@@ -19,6 +19,9 @@ set more off
 *Import Dataset*
 use "Data/Extension/IntermediateData/intermediate_E2.dta"
 
+*Clean Dataset*
+drop if date>`=mdy(09,01,2020)'
+
 *Save Modified Dataset*
 save Data/Synthetic/IntermediateData/intermediate_SC2.dta, replace
 
