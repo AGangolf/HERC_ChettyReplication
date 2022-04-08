@@ -29,7 +29,8 @@ order any_sector_tight, after(any_sector)
 
 *NOTE: SD Never Even Closed & DC Weird*
 
-*Drop pcare due to confounding with retail*
+*Drop and absorb pcare due to confounding with retail*
+replace retail=1 if pcare==1
 drop pcare
 
 *Save Modified Dataset*
